@@ -1,0 +1,308 @@
+<!-- DECLARA A VERSÃO DO HTML. HTML5 no caso -->
+<!DOCTYPE html>
+
+<!-- ELEMENTO RAIZ DE TODO O DOCUMENTO HTML -->
+<!-- lang é um atributo que define o idioma principal da página (ex: 'en' para inglês, 'pt-BR' para português do Brasil) -->
+<html lang="en">
+  <!-- HEAD: cabeçalho da página. Contém configurações, metadados e links para scripts, estilos, etc. -->
+  <head>
+    <!-- META charset: define a codificação de caracteres usada no documento (UTF-8 permite acentos e caracteres especiais) -->
+    <meta charset="UTF-8" />
+
+    <!-- META viewport: configura o comportamento responsivo em dispositivos móveis -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- TITLE: define o título da aba no navegador -->
+    <title>Document</title>
+  </head>
+
+  <!-- BODY: corpo da página. Aqui vão os elementos visíveis ao usuário, como textos, imagens, botões, etc. -->
+  <body>
+    <!--
+     TITULO E PARAGRAFO 
+    <h1>Titulo</h1>
+    <p>Paragrafo</p>
+     -->
+
+    <!-- 
+    FORMATAÇÃO DE TEXTO:
+
+    <b> ou <strong>:  
+    - <strong> é SEMÂNTICA (indica importância, geralmente negrito)  
+    - <b> é APENAS FORMATAÇÃO (negrito visual, sem significado semântico)
+
+    <i> ou <em>:  
+    - <em> é SEMÂNTICA (ênfase, geralmente itálico)  
+    - <i> é APENAS FORMATAÇÃO (itálico visual, sem significado semântico)
+
+    <mark>: SEMÂNTICA (indica texto destacado ou marcado)
+
+    <small>: SEMÂNTICA (indica texto de tamanho menor, geralmente notas, avisos)
+
+    <del>: SEMÂNTICA (indica texto removido, riscado)
+
+    <ins>: SEMÂNTICA (indica texto inserido, sublinhado)
+
+    <sub>: SEMÂNTICA (texto subscrito, abaixo da linha)
+
+    <sup>: SEMÂNTICA (texto sobrescrito, acima da linha)
+    -->
+
+    <!-- 
+    QUEBRA DE LINHA:
+
+    <br> 
+    - Quebra de linha simples (quebra dentro de um texto, sem significado semântico)
+    - Usada para pular linha sem iniciar um novo parágrafo
+
+    <hr> 
+    - Quebra temática (linha horizontal)
+    - É uma tag SEMÂNTICA que indica uma separação temática ou divisão no conteúdo
+    -->
+
+    <!-- 
+    LINKS:
+
+    - LINKS RELATIVOS: 
+    Caminho relativo ao local do arquivo atual, ex: /exemplo ou ./exemplo.html
+
+    - LINKS ABSOLUTOS: 
+    URL completa, ex: https://teste.com.br/exemplo
+
+    - href: 
+    Atributo que especifica o endereço do link (URL)
+
+    - target: 
+    Atributo que define onde o link será aberto.
+    Valores comuns:
+        _self  → abre na mesma aba (padrão)
+        _blank → abre em uma nova aba ou janela
+
+    Exemplo:
+    
+    <a href="https:pizzariafav.com/favorita" target="_blank">favorita</a>
+
+    -->
+
+    <!--
+    IMAGENS:
+
+    - <img>: tag usada para inserir imagens na página
+
+    - src: atributo que indica o caminho (relativo ou absoluto) da imagem
+
+    - alt: texto alternativo que descreve a imagem (importante para acessibilidade e SEO)
+
+    - width e height: definem largura e altura da imagem (opcional, em pixels)
+
+    - title: texto que aparece como dica quando o mouse passa sobre a imagem
+
+    EXEMPLO:
+
+    <img src="/imagens/foto.jpg" alt="Foto de um pôr do sol" width="600" height="400" title="Pôr do sol">
+    -->
+
+    <!--
+    <figure> e <figcaption>:
+
+    - <figure> é uma tag semântica usada para agrupar conteúdo de mídia, como imagens, ilustrações, gráficos, códigos, etc.
+    - Serve para destacar um conteúdo visual ou multimídia que tenha relação com o texto, mas que pode ficar independente do fluxo principal do documento.
+    - Dentro do <figure> podemos colocar a imagem (<img>) ou qualquer mídia, e uma legenda opcional.
+
+    - <figcaption> é a legenda do conteúdo dentro do <figure>.
+    - Deve ser o primeiro ou o último filho do <figure>.
+    - Fornece uma descrição ou contexto para a imagem ou mídia dentro do <figure>.
+
+    Exemplo:
+
+    <figure>
+    <img src="foto-praia.jpg" alt="Praia com pôr do sol">
+    <figcaption>Pôr do sol na praia de Copacabana.</figcaption>
+    </figure>
+
+    Esse uso ajuda na acessibilidade e melhora a semântica do conteúdo.
+    -->
+    <!--
+    LISTAS:
+
+    1. Listas não ordenadas (<ul>):
+    - Usadas para agrupar itens que não precisam ter uma ordem específica.
+    - Cada item é representado pela tag <li> (list item).
+
+    Exemplo:
+    <ul>
+        <li>Maçã</li>
+        <li>Banana</li>
+        <li>Laranja</li>
+    </ul>
+
+    2. Listas ordenadas (<ol>):
+    - Usadas para itens que precisam seguir uma ordem (numérica, alfabética, etc).
+    - Também usam <li> para cada item.
+
+    Exemplo:
+    <ol>
+        <li>Primeiro passo</li>
+        <li>Segundo passo</li>
+        <li>Terceiro passo</li>
+    </ol>
+
+    3. Listas de descrição (<dl>):
+    - Usadas para pares termo-descrição.
+    - Contém <dt> para o termo e <dd> para a descrição.
+
+    Exemplo:
+    <dl>
+        <dt>HTML</dt>
+        <dd>Linguagem de marcação para páginas web.</dd>
+        <dt>CSS</dt>
+        <dd>Folhas de estilo para definir o visual das páginas.</dd>
+    </dl>
+
+    ---
+
+    TABELAS:
+
+    - Usadas para exibir dados tabulares (linhas e colunas).
+    - Tags principais:
+    - <table>: cria a tabela
+    - <thead>: cabeçalho da tabela (opcional)
+    - <tbody>: corpo da tabela
+    - <tr>: linha da tabela
+    - <th>: célula de cabeçalho (geralmente em negrito e centralizado)
+    - <td>: célula de dados
+
+    Exemplo simples:
+
+    <table>
+    <thead>
+        <tr>
+        <th>Nome</th>
+        <th>Idade</th>
+        <th>Cidade</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+        <td>Ana</td>
+        <td>25</td>
+        <td>São Paulo</td>
+        </tr>
+        <tr>
+        <td>Bruno</td>
+        <td>30</td>
+        <td>Rio de Janeiro</td>
+        </tr>
+    </tbody>
+    </table>
+
+    ---
+
+    Essas estruturas ajudam na organização e semântica do conteúdo, facilitando a acessibilidade e a interpretação por mecanismos de busca.
+
+    Quer que eu crie um exemplo com CSS básico para deixar as tabelas e listas mais bonitas?  
+    -->
+
+    <!-- 
+    FORMULÁRIOS EM HTML:
+
+    - <form>: define um formulário para envio de dados.
+    - Atributo "action": URL ou arquivo para onde os dados serão enviados.
+    - Atributo "method": define o método de envio (GET ou POST).
+
+    - <label>: etiqueta para identificar um campo. Associada ao campo com o atributo "for".
+
+    - <input>: campo de entrada de dados. Pode ser de vários tipos:
+        - type="text" → texto simples
+        - type="email" → campo para email (valida formato)
+        - type="password" → campo para senhas
+        - type="number", "date", "checkbox", etc.
+    - Atributo "name": nome do campo (chave que será enviada)
+    - Atributo "placeholder": texto de sugestão dentro do campo
+    - Atributo "required": torna o campo obrigatório
+
+    - <select>: lista de opções. Cada item é definido com <option>.
+
+    - <textarea>: área de texto para múltiplas linhas. Usada para mensagens ou descrições maiores.
+
+    - <button>: botão que executa uma ação.
+    - type="submit" → envia os dados do formulário
+    - type="reset" → limpa todos os campos preenchidos
+    - type="button" → botão comum, pode ser usado com JavaScript
+    -->
+
+    <!--
+    TAGS SEMÂNTICAS EM HTML5:
+
+    As tags semânticas descrevem **o significado** do conteúdo que elas envolvem. 
+    Elas melhoram a **acessibilidade**, o **SEO** e a **organização** do código.
+
+    Principais tags:
+
+    <header>
+    - Define o cabeçalho da página ou de uma seção.
+    - Pode conter logo, menu de navegação, título, etc.
+
+    <nav>
+    - Indica um bloco de links de navegação (menu, links internos, etc).
+
+    <main>
+    - Define o conteúdo principal da página (único por página).
+    - Deve conter o que é central ao propósito daquela página.
+
+    <section>
+    - Representa uma seção temática ou agrupamento de conteúdo.
+    - Pode conter título e outros elementos.
+
+    <article>
+    - Conteúdo independente e reutilizável (ex: post de blog, notícia, comentário).
+
+    <aside>
+    - Conteúdo lateral/complementar (ex: barra lateral, links relacionados, anúncios).
+
+    <footer>
+    - Rodapé da página ou de uma seção.
+    - Geralmente contém direitos autorais, links de contato, redes sociais, etc.
+
+    <figure> e <figcaption>
+    - Usados para agrupar mídias com legenda.
+    - Exemplo: imagem + legenda explicativa.
+
+    <mark>
+    - Destaca um trecho de texto, como se estivesse "marcado com marca-texto".
+
+    <time>
+    - Representa data ou hora, útil para eventos, publicações, etc.
+
+    Exemplo prático:
+
+    <header>
+    <h1>Meu Blog</h1>
+    <nav>
+        <a href="/">Início</a>
+        <a href="/posts">Posts</a>
+    </nav>
+    </header>
+
+    <main>
+    <article>
+        <h2>Título do Post</h2>
+        <p>Conteúdo do post...</p>
+        <footer>Publicado em <time datetime="2025-05-28">28 de maio de 2025</time></footer>
+    </article>
+
+    <aside>
+        <h3>Artigos Relacionados</h3>
+        <ul>
+        <li><a href="#">Post 1</a></li>
+        <li><a href="#">Post 2</a></li>
+        </ul>
+    </aside>
+    </main>
+
+    <footer>
+    <p>© 2025 Meu Blog. Todos os direitos reservados.</p>
+    </footer>
+    -->
+  </body>
+</html>
