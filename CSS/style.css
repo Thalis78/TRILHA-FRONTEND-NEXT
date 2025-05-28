@@ -1,0 +1,1016 @@
+/* 
+  ============================
+  FORMAS DE APLICAR CSS
+  ============================
+
+  1. INLINE:
+  - O estilo é aplicado diretamente na tag HTML, usando o atributo "style".
+  - Útil para testes rápidos, mas **não recomendado** para projetos grandes.
+  - Exemplo:
+    <p style="color: red;">Texto em vermelho</p>
+
+  2. INTERNO (ou EMBUTIDO):
+  - O CSS é escrito dentro da tag <style> no próprio arquivo HTML.
+  - Funciona **apenas para aquele arquivo HTML**.
+  - Boa opção para páginas simples ou exemplos locais.
+  - Exemplo:
+    <style>
+      p { color: blue; }
+    </style>
+
+  3. EXTERNO:
+  - O CSS fica em um arquivo separado (.css).
+  - O HTML faz referência a ele usando a tag <link>.
+  - Permite **reutilização do estilo** em várias páginas e melhor organização do código.
+  - Exemplo no HTML:
+    <link rel="stylesheet" href="estilos.css">
+
+
+  ============================
+  ID E CLASS
+  ============================
+
+  - ID: Identificador único para um elemento. Usado com # no CSS.
+  - CLASS: Usada para aplicar o mesmo estilo a vários elementos. Usada com . no CSS.
+
+  OBS: O navegador sempre dá prioridade àquilo que tem mais especificidade.
+  OBS: No atributo class é possível passar mais de uma classe no mesmo elemento.
+*/
+
+/* 
+  ============================
+  BACKGROUND (FUNDO)
+  ============================
+
+  Propriedade usada para definir o fundo de um elemento.
+  Permite controlar:
+    - Cor de fundo
+    - Imagem de fundo
+    - Posição da imagem
+    - Repetição da imagem
+    - Tamanho da imagem
+    - Anexação do fundo
+    - Gradientes
+*/
+
+/* Cor de fundo sólida */
+.exemplo1 {
+  background-color: lightblue;
+}
+
+/* Imagem de fundo */
+.exemplo2 {
+  background-image: url("paisagem.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+/* Atalho usando background */
+.exemplo3 {
+  background: url("fundo-textura.png") no-repeat center/contain;
+  /* Equivale a:
+       background-image: url(...);
+       background-repeat: no-repeat;
+       background-position: center;
+       background-size: contain;
+    */
+}
+
+/* 
+    ============================
+    BACKGROUND-ATTACHMENT
+    ============================
+  
+    Define como o fundo se comporta em relação à rolagem.
+  
+    Valores:
+    - scroll: fundo rola com o conteúdo (padrão)
+    - fixed: fundo fica fixo na tela
+    - local: fundo rola com o conteúdo do elemento
+  */
+
+.exemplo-scroll {
+  background-image: url("imagem.jpg");
+  background-attachment: scroll;
+}
+
+.exemplo-fixed {
+  background-image: url("imagem.jpg");
+  background-attachment: fixed;
+}
+
+.exemplo-local {
+  background-image: url("imagem.jpg");
+  background-attachment: local;
+}
+
+/* 
+    ============================
+    BACKGROUND SHORTHAND
+    ============================
+  
+    Forma compacta de definir várias propriedades de fundo em uma linha:
+    background: [color] [image] [position] / [size] [repeat] [attachment];
+  */
+
+.shorthand-exemplo {
+  background: #000 url("imagem.jpg") center center / cover no-repeat fixed;
+  /* Equivale a:
+       background-color: #000;
+       background-image: url('imagem.jpg');
+       background-position: center center;
+       background-size: cover;
+       background-repeat: no-repeat;
+       background-attachment: fixed;
+    */
+}
+
+/*
+  ============================
+  GRADIENTES (Gradients)
+  ============================
+
+  Gradientes permitem criar transições suaves entre duas ou mais cores como fundo.
+
+  Tipos mais comuns:
+  
+  1. linear-gradient()
+     - Cria uma transição linear de cores.
+     - Você pode definir a **direção** ou o **ângulo** da transição.
+
+     Exemplo com DIREÇÃO:
+     background: linear-gradient(to right, #ff7e5f, #feb47b);
+     → Vai da esquerda para a direita.
+
+     Outras direções possíveis:
+       - to left
+       - to top
+       - to bottom
+       - to top right, to bottom left, etc.
+
+     Exemplo com ÂNGULO:
+     background: linear-gradient(45deg, #6a11cb, #2575fc);
+     → Inicia em 45 graus no sentido horário (diagonal).
+
+  2. radial-gradient()
+     - Cria um gradiente em forma de círculo ou elipse a partir de um ponto central.
+
+     Exemplo:
+     background: radial-gradient(circle, #ff9a9e, #fad0c4);
+
+  3. repeating-linear-gradient() e repeating-radial-gradient()
+     - Repetem o padrão de gradiente continuamente.
+*/
+
+/* Exemplo prático com direção */
+.gradiente-direcao {
+  background: linear-gradient(to right, #fceabb, #f8b500);
+}
+
+/* Exemplo prático com ângulo */
+.gradiente-angulo {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+}
+
+/*
+  ====================================
+  UNIDADES DE MEDIDA NO CSS
+  ====================================
+
+  As unidades são usadas para definir tamanhos como largura, altura, margens, padding, fontes, etc.
+
+  ------------------------------------
+  1. UNIDADES ABSOLUTAS (fixas)
+  ------------------------------------
+  - Têm um tamanho fixo, que **não se adapta** ao dispositivo ou tela.
+  - São pouco responsivas, mas úteis para impressão ou quando você quer um tamanho exato.
+
+  Principais unidades:
+
+  → px (pixels):
+     - Unidade mais usada.
+     - Representa um ponto fixo na tela.
+     - Exemplo: width: 300px;
+
+  → cm (centímetros), mm (milímetros):
+     - Usados geralmente em impressão.
+     - Exemplo: width: 10cm;
+
+  → in (polegadas):
+     - 1in = 2.54cm = 96px
+     - Exemplo: width: 1in;
+
+  → pt (ponto tipográfico):
+     - 1pt = 1/72in
+     - Muito usado em documentos impressos.
+     - Exemplo: font-size: 12pt;
+
+  → pc (pica):
+     - 1pc = 12pt
+     - Usado principalmente em tipografia impressa.
+
+  Exemplo de bloco com medidas fixas:
+*/
+
+.caixa-fixa {
+  width: 300px;
+  height: 150px;
+  background-color: lightgray;
+  padding: 10mm;
+  font-size: 12pt;
+}
+
+/*
+    ------------------------------------
+    2. UNIDADES RELATIVAS
+    ------------------------------------
+    - O tamanho é relativo a outro valor (como fonte pai, largura da tela, etc).
+    - São muito mais flexíveis e ideais para design responsivo.
+  
+    Principais unidades:
+  
+    → em (relativo ao tamanho da fonte do elemento pai):
+       - 1em = 100% do font-size do elemento pai.
+       - Exemplo: font-size: 2em → duas vezes maior que a fonte do pai.
+  
+    → rem (relativo ao tamanho da fonte raiz <html>):
+       - Sempre baseado no font-size definido no <html>.
+       - Exemplo: font-size: 1.5rem;
+  
+    → % (porcentagem):
+       - Relativo ao tamanho do elemento pai.
+       - Exemplo: width: 80% → ocupa 80% da largura do pai.
+  
+    → vw e vh:
+       - vw = 1% da largura da viewport (tela).
+       - vh = 1% da altura da viewport.
+       - Exemplo: width: 100vw; height: 100vh;
+  
+    → vmin e vmax:
+       - vmin = menor entre vw e vh
+       - vmax = maior entre vw e vh
+  
+    Exemplo de bloco com medidas relativas:
+  */
+
+.caixa-relativa {
+  width: 50%;
+  height: 30vh;
+  padding: 2em;
+  font-size: 1.2rem;
+  background-color: lightblue;
+}
+
+/*
+    DICAS:
+    - Use **unidades relativas** para projetos responsivos.
+    - Use **rem** para fontes e **%/vw/vh** para larguras e alturas flexíveis.
+    - Evite unidades absolutas em interfaces modernas (salvo exceções).
+  */
+
+/*
+  ====================================
+  PROPRIEDADES DE TEXTO NO CSS
+  ====================================
+
+  Essas propriedades controlam a aparência e o comportamento do texto em elementos HTML.
+
+  ------------------------------------
+  1. color
+  ------------------------------------
+  - Define a cor do texto.
+  - Pode ser um nome (ex: red), hexadecimal (#ff0000), rgb(), hsl(), etc.
+  - Exemplo:
+*/
+
+.texto-cor {
+  color: #333; /* cinza escuro */
+}
+
+/*
+    ------------------------------------
+    2. font-size
+    ------------------------------------
+    - Define o tamanho da fonte.
+    - Pode usar unidades absolutas (px, pt) ou relativas (em, rem, %, vw).
+    - Exemplo:
+  */
+
+.texto-tamanho {
+  font-size: 20px;
+}
+
+/*
+    ------------------------------------
+    3. font-family
+    ------------------------------------
+    - Define a fonte usada no texto.
+    - Sempre coloque fontes alternativas e uma genérica ao final (ex: sans-serif).
+    - Exemplo:
+  */
+
+.texto-fonte {
+  font-family: "Arial", "Helvetica", sans-serif;
+}
+
+/*
+    ------------------------------------
+    4. font-weight
+    ------------------------------------
+    - Define a espessura (peso) do texto.
+    - Valores comuns: normal (400), bold (700), lighter, bolder ou numérico (100 a 900).
+  */
+
+.texto-peso {
+  font-weight: bold;
+}
+
+/*
+    ------------------------------------
+    5. font-style
+    ------------------------------------
+    - Define o estilo da fonte.
+    - Valores: normal, italic, oblique.
+  */
+
+.texto-estilo {
+  font-style: italic;
+}
+
+/*
+    ------------------------------------
+    6. text-align
+    ------------------------------------
+    - Alinha o texto horizontalmente.
+    - Valores: left, right, center, justify.
+  */
+
+.texto-alinhado {
+  text-align: justify;
+}
+
+/*
+    ------------------------------------
+    7. text-decoration
+    ------------------------------------
+    - Define decorações no texto: sublinhado, linha sobreposta etc.
+    - Valores: none, underline, overline, line-through.
+  */
+
+.texto-decorado {
+  text-decoration: underline;
+}
+
+/*
+    ------------------------------------
+    8. text-transform
+    ------------------------------------
+    - Controla a capitalização do texto.
+    - Valores: none, uppercase, lowercase, capitalize.
+  */
+
+.texto-transformado {
+  text-transform: uppercase;
+}
+
+/*
+    ------------------------------------
+    9. line-height
+    ------------------------------------
+    - Controla o espaçamento entre linhas do texto.
+    - Pode ser um número (multiplicador) ou unidade (ex: px).
+  */
+
+.texto-altura-linha {
+  line-height: 1.6;
+}
+
+/*
+    ------------------------------------
+    10. letter-spacing e word-spacing
+    ------------------------------------
+    - letter-spacing: espaçamento entre letras.
+    - word-spacing: espaçamento entre palavras.
+  */
+
+.texto-espacamento {
+  letter-spacing: 2px;
+  word-spacing: 8px;
+}
+
+/*
+    ------------------------------------
+    11. white-space
+    ------------------------------------
+    - Controla como o CSS lida com espaços em branco e quebras de linha.
+    - Valores: normal, nowrap, pre, pre-wrap, pre-line.
+    - Exemplo útil para evitar quebra de linha:
+  */
+
+.texto-nowrap {
+  white-space: nowrap;
+}
+
+/*
+    ------------------------------------
+    DICA EXTRA: shorthand para fontes
+    ------------------------------------
+    - Você pode usar a propriedade "font" para agrupar:
+      font: [style] [weight] [size]/[line-height] [family];
+  
+    Exemplo:
+  */
+
+.texto-shorthand {
+  font: italic bold 16px/1.5 "Verdana", sans-serif;
+}
+
+/*
+  ====================================
+  BORDER, MARGIN E PADDING NO CSS
+  ====================================
+
+  Essas três propriedades fazem parte da "caixa do elemento" (box model).
+  Elas controlam o espaço **ao redor** e **dentro** do conteúdo de um elemento HTML.
+
+  ------------------------------------
+  1. BORDER (BORDA)
+  ------------------------------------
+  - Cria uma borda ao redor do elemento.
+  - Pode definir:
+    • Largura
+    • Estilo
+    • Cor
+
+  - Estilos comuns: solid, dashed, dotted, double, groove, ridge, inset, outset, none.
+
+  - Exemplo:
+*/
+
+.exemplo-borda {
+  border: 2px solid #000; /* 2px de espessura, sólida e preta */
+}
+
+/* Borda individual por lado: */
+.exemplo-borda-lados {
+  border-top: 2px solid red;
+  border-right: 4px dashed blue;
+  border-bottom: 2px dotted green;
+  border-left: 3px double black;
+}
+
+/*
+    ------------------------------------
+    2. MARGIN (MARGEM EXTERNA)
+    ------------------------------------
+    - Define o espaço entre o elemento e os elementos **externos** a ele.
+    - Aceita valores individuais ou shorthand:
+      • margin: cima direita baixo esquerda;
+      • margin: vertical horizontal;
+      • margin: valor (todos os lados);
+  
+    - Também aceita valores automáticos e negativos.
+  
+    - Exemplo:
+  */
+
+.exemplo-margem {
+  margin: 20px; /* Aplica 20px de margem em todos os lados */
+}
+
+/* Valores diferentes por lado */
+.exemplo-margem-lados {
+  margin-top: 10px;
+  margin-right: 15px;
+  margin-bottom: 20px;
+  margin-left: 25px;
+}
+
+/* Centralizar horizontalmente (em blocos) */
+.centralizado {
+  margin: 0 auto;
+}
+
+/*
+    ------------------------------------
+    3. PADDING (ESPACAMENTO INTERNO)
+    ------------------------------------
+    - Define o espaço entre o conteúdo e a borda do elemento.
+    - Funciona como a margem, mas **dentro** do elemento.
+  
+    - Exemplo:
+  */
+
+.exemplo-padding {
+  padding: 10px; /* 10px de espaçamento interno em todos os lados */
+}
+
+/* Padding por lado */
+.exemplo-padding-lados {
+  padding-top: 5px;
+  padding-right: 10px;
+  padding-bottom: 15px;
+  padding-left: 20px;
+}
+
+/*
+    ------------------------------------
+    SHORTHAND PARA MARGIN E PADDING
+    ------------------------------------
+    - 1 valor: todos os lados iguais
+      padding: 10px;
+  
+    - 2 valores: vertical | horizontal
+      padding: 10px 20px;
+  
+    - 3 valores: cima | lados | baixo
+      padding: 10px 20px 5px;
+  
+    - 4 valores: cima | direita | baixo | esquerda
+      padding: 10px 15px 20px 25px;
+  
+    OBS: Mesmo vale para margin!
+  */
+
+/*
+    ------------------------------------
+    BORDER RADIUS (ARREDONDAR CANTOS)
+    ------------------------------------
+    - Define o raio de arredondamento dos cantos da borda.
+    - Pode usar px, %, etc.
+  
+    Exemplo:
+  */
+
+.exemplo-radius {
+  border: 2px solid #555;
+  border-radius: 10px;
+}
+
+.exemplo-circulo {
+  border-radius: 50%; /* Se o elemento for quadrado, vira um círculo */
+}
+
+/* 
+  ============================
+  BOX MODEL - MODELO DE CAIXA
+  ============================
+
+  Todo elemento HTML é representado como uma caixa composta por:
+
+  1. CONTENT (Conteúdo)
+     - Área onde fica o texto, imagem ou outro conteúdo.
+     - Controlada por width e height.
+
+  2. PADDING (Espaçamento interno)
+     - Espaço entre o conteúdo e a borda.
+     - Cria um "respiro" interno.
+
+  3. BORDER (Borda)
+     - Contorno ao redor do padding e conteúdo.
+     - Pode ter espessura, cor e estilo.
+
+  4. MARGIN (Margem)
+     - Espaço fora da borda.
+     - Separa o elemento dos demais.
+
+  -------------------------------------------------
+  VISUALIZAÇÃO SIMPLIFICADA:
+
+  +---------------------------+
+  |         MARGIN            | ← Espaço externo
+  |  +---------------------+  |
+  |  |      BORDER         |  | ← Linha da borda
+  |  |  +---------------+  |  |
+  |  |  |   PADDING     |  |  | ← Espaço interno
+  |  |  |  +---------+  |  |  |
+  |  |  |  | CONTENT |  |  |  | ← Conteúdo (texto, imagem)
+  |  |  |  +---------+  |  |  |
+  |  |  +---------------+  |  |
+  |  +---------------------+  |
+  +---------------------------+
+
+  -------------------------------------------------
+  Cálculo de tamanho padrão:
+
+  Largura total = width + padding-esq + padding-dir + border-esq + border-dir + margin-esq + margin-dir
+  Altura total  = height + padding-top + padding-bottom + border-top + border-bottom + margin-top + margin-bottom
+
+  -------------------------------------------------
+  BOX-SIZING:
+
+  Por padrão, a largura e altura se aplicam somente ao conteúdo (content-box).
+
+  Para facilitar o controle, use:
+
+    box-sizing: border-box;
+
+  Com isso, width e height já incluem padding e border.
+
+  -------------------------------------------------
+  EXEMPLO PRÁTICO:
+
+  .caixa {
+    width: 300px;
+    padding: 20px;
+    border: 5px solid black;
+    margin: 10px;
+    box-sizing: border-box; /* largura total = 300px */
+
+/*
+  =======================
+  OVERFLOW - ESTOURO DE CONTEÚDO
+  =======================
+
+  A propriedade overflow controla o que acontece quando o conteúdo de um elemento 
+  ultrapassa a área disponível (largura e altura definidas).
+
+  POSSÍVEIS VALORES:
+
+  1. visible (padrão)
+     - O conteúdo que ultrapassa fica visível, "vaza" para fora da caixa.
+     - Pode quebrar o layout.
+
+  2. hidden
+     - O conteúdo que ultrapassa é cortado e fica oculto.
+     - Não mostra barras de rolagem.
+
+  3. scroll
+     - Sempre mostra barras de rolagem, mesmo que o conteúdo caiba dentro da caixa.
+     - Permite o usuário rolar para ver o conteúdo completo.
+
+  4. auto
+     - Mostra barras de rolagem apenas se o conteúdo ultrapassar a área do elemento.
+     - Mais usado para manter a interface limpa.
+
+  ---------------------------------------------------
+  EXEMPLOS:
+
+  /* Conteúdo "vaza" para fora */
+.exemplo-visible {
+  width: 150px;
+  height: 100px;
+  overflow: visible;
+}
+
+/* Conteúdo cortado, sem barras */
+.exemplo-hidden {
+  width: 150px;
+  height: 100px;
+  overflow: hidden;
+}
+
+/* Barras de rolagem sempre visíveis */
+.exemplo-scroll {
+  width: 150px;
+  height: 100px;
+  overflow: scroll;
+}
+
+/* Barras aparecem só quando necessário */
+.exemplo-auto {
+  width: 150px;
+  height: 100px;
+  overflow: auto;
+}
+
+/* ---------------------------------------------------
+  OBS:
+  - overflow-x e overflow-y controlam o estouro horizontal e vertical separadamente.
+  - Muito útil para criar caixas fixas com conteúdo rolável. */
+
+/*
+  ================================
+  ESTILOS DE LINKS (a) COM PSEUDO-CLASSES
+  ================================
+
+  Links possuem vários estados que podemos estilizar com pseudo-classes:
+
+  1. :link
+     - Aplica o estilo ao link que **ainda não foi visitado** pelo usuário.
+     - Exemplo: cor padrão do link.
+
+  2. :visited
+     - Aplica o estilo ao link que **já foi visitado**.
+     - Útil para indicar links clicados.
+
+  3. :hover
+     - Aplica o estilo quando o usuário **passa o mouse em cima** do link.
+     - Geralmente usado para indicar que o link é interativo.
+
+  4. :active
+     - Aplica o estilo no momento em que o link está **sendo clicado** (pressionado).
+     - Dura só enquanto o botão do mouse está pressionado.
+
+  5. :focus
+     - Aplica o estilo quando o link está **com foco**, geralmente ao navegar com o teclado (tab).
+     - Importante para acessibilidade.
+
+  ----------------------------------------------------------
+  EXEMPLO BÁSICO:
+
+  a:link {
+    color: blue;}           /* Link normal não visitado */
+
+a:visited {
+  color: purple; /* Link visitado */
+}
+
+a:hover {
+  color: red; /* Mouse sobre o link */
+  text-decoration: underline;
+}
+
+a:active {
+  color: orange; /* Enquanto clica */
+}
+
+a:focus {
+  outline: 2px solid #000; /* Destaque no foco (teclado) */
+}
+
+/* ----------------------------------------------------------
+ORDEM IMPORTANTE:
+
+A ordem das pseudo-classes deve ser sempre:
+
+:link -> :visited -> :hover -> :focus -> :active
+
+Para garantir que as regras sejam aplicadas corretamente.
+
+----------------------------------------------------------
+DICA:
+
+- Use :focus para melhorar a navegação por teclado.
+- Evite remover completamente o outline no :focus, para não prejudicar acessibilidade. */
+
+/*
+  ================================
+  DISPLAY, POSITION, FLOAT E FLEXBOX
+  ================================
+
+  1. DISPLAY:
+  - Controla como o elemento é exibido na página.
+  - Principais valores:
+    - block: elemento ocupa toda a largura disponível e quebra linha.
+    - inline: elemento fica na mesma linha, largura conforme conteúdo.
+    - inline-block: como inline, mas permite definir largura e altura.
+    - none: elemento não aparece (invisível, sem ocupar espaço).
+    - flex: cria um container flexível para organizar os filhos.
+
+  2. POSITION:
+  - Controla o posicionamento dos elementos.
+  - Valores principais:
+    - static (padrão): posicionamento normal, fluxo do documento.
+    - relative: posição relativa ao seu local original.
+    - absolute: posicionado relativo ao elemento pai posicionado (não static).
+    - fixed: posicionado em relação à viewport (tela), não se move ao rolar.
+    - sticky: "gruda" quando você rola até certo ponto.
+
+  3. FLOAT:
+  - Faz o elemento "flutuar" para esquerda ou direita, fazendo o texto contornar.
+  - Muito usado para layouts antigos, hoje menos frequente.
+  - Pode causar problemas de colapso de container se não usar "clear".
+
+  4. FLEXBOX (display: flex)
+  - Sistema moderno para layout, muito poderoso e simples.
+  - Container flex: 
+    display: flex; 
+    define um container flexível.
+
+  - Eixos do Flexbox:
+    - Main axis (horizontal por padrão)
+    - Cross axis (vertical por padrão)
+
+  - Propriedades principais do container:
+    - flex-direction: row (padrão), column, row-reverse, column-reverse
+    - justify-content: alinha no main axis (start, center, space-between, etc)
+    - align-items: alinha no cross axis (start, center, stretch, baseline)
+    - flex-wrap: controla quebra de linha dos itens (nowrap, wrap, wrap-reverse)
+
+  - Propriedades dos itens:
+    - flex-grow, flex-shrink, flex-basis: controlam crescimento e tamanho
+
+  5. ALINHAMENTO VERTICAL COM FLEXBOX
+  - Para alinhar verticalmente um conteúdo dentro de um container flex:
+    display: flex;
+    flex-direction: column;  ou row, dependendo do layout 
+    justify-content: center;  alinha verticalmente 
+    align-items: center;  alinha horizontalmente 
+
+  6. RESPONSIVIDADE COM MEDIA QUERIES
+  - Media queries ajudam a adaptar layout para diferentes tamanhos de tela.
+  - Exemplo para alinhar verticalmente só em telas pequenas:
+
+  @media (max-width: 600px) {
+    .container {
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+
+*/
+
+/* Exemplo prático */
+
+.container {
+  display: flex;
+  flex-direction: row; /* Alinhamento horizontal */
+  justify-content: space-between; /* Espaço entre os itens */
+  align-items: center; /* Alinha verticalmente ao centro */
+  height: 200px;
+  border: 1px solid #ccc;
+}
+
+/* Responsividade: em telas pequenas, muda para coluna e centraliza */
+@media (max-width: 600px) {
+  .container {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+  }
+}
+
+.item {
+  background-color: lightblue;
+  padding: 20px;
+  margin: 5px;
+  flex: 1; /* faz o item crescer igualmente */
+  text-align: center;
+}
+
+/* Exemplos básicos de display, position e float */
+
+.exemplo-block {
+  display: block;
+  width: 100%;
+  background: #eee;
+}
+
+.exemplo-inline {
+  display: inline;
+  color: red;
+}
+
+.exemplo-inline-block {
+  display: inline-block;
+  width: 100px;
+  height: 50px;
+  background: #ddd;
+}
+
+.exemplo-none {
+  display: none; /* some da tela */
+}
+
+.pos-relative {
+  position: relative;
+  top: 10px;
+  left: 10px;
+}
+
+.pos-absolute {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.pos-fixed {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+}
+
+.float-left {
+  float: left;
+  width: 100px;
+  background: #ccc;
+  margin-right: 10px;
+}
+
+.float-right {
+  float: right;
+  width: 100px;
+  background: #ccc;
+  margin-left: 10px;
+}
+
+/* Clearfix para container com floats */
+.clearfix::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+/*
+  ==========================
+  TRANSIÇÕES E ANIMAÇÕES CSS
+  ==========================
+
+  1. TRANSIÇÕES (transition)
+  --------------------------
+  - Permite que propriedades CSS mudem de forma suave ao longo do tempo.
+  - Muito usada para efeitos de hover, foco, clique etc.
+  - Sintaxe básica:
+    transition: propriedade tempo curva-de-velocidade atraso;
+
+  - Parâmetros:
+    * propriedade: qual propriedade CSS terá a transição (ex: color, background-color, width, all).
+    * tempo: duração da transição (ex: 0.3s, 500ms).
+    * curva-de-velocidade (timing-function): como a transição acelera/desacelera (ex: ease, linear, ease-in, ease-out).
+    * atraso (delay): tempo para começar a transição (ex: 0s, 0.5s).
+
+  - Exemplo:
+    button {
+      background-color: blue;
+      transition: background-color 0.3s ease;
+    }
+    button:hover {
+      background-color: red;
+    }
+
+  - A propriedade "all" faz a transição para todas as propriedades animáveis.
+  
+  -----------------------------------
+  2. ANIMAÇÕES (animation)
+  ------------------------
+  - Permite criar sequências complexas e repetitivas de mudanças visuais.
+  - Usa @keyframes para definir os estados da animação.
+  - Sintaxe básica da propriedade animation:
+    animation: nome duração timing-function atraso direção repetição estado inicial;
+
+  - Principais subpropriedades:
+    * animation-name: nome da animação (@keyframes)
+    * animation-duration: duração total (ex: 2s)
+    * animation-timing-function: curva de velocidade (ex: ease, linear)
+    * animation-delay: atraso antes de começar
+    * animation-iteration-count: quantas vezes repete (ex: infinite para infinito)
+    * animation-direction: normal, reverse, alternate (vai e volta)
+    * animation-fill-mode: se mantém estado após terminar (forwards, backwards, none)
+    * animation-play-state: running ou paused
+
+  - Exemplo simples:
+    @keyframes mover {
+      0% { transform: translateX(0); }
+      50% { transform: translateX(100px); }
+      100% { transform: translateX(0); }
+    }
+
+    .caixa {
+      animation: mover 3s ease-in-out infinite;
+    }
+
+  ----------------------------------
+  RESUMO DOS CONCEITOS
+
+  TRANSIÇÃO:
+  - Ideal para mudanças simples e suaves em hover, foco, clique.
+  - Fácil de usar e controlar.
+
+  ANIMAÇÃO:
+  - Para sequências mais elaboradas, múltiplos passos, repetições.
+  - Pode animar múltiplas propriedades ao mesmo tempo.
+  - Requer @keyframes para definir etapas.
+
+*/
+/*
+  ===============================
+  USO DO & COMERCIAL (&) NO CSS
+  ===============================
+
+  - O símbolo "&" é usado em pré-processadores CSS como SASS e SCSS.
+  - Ele representa o seletor pai atual e é muito útil para encadear estilos e pseudo-classes.
+
+  EXEMPLO DE USO PARA EVENTOS (pseudo-classes):
+
+  .botao {
+    background-color: blue;
+
+    /* Quando o mouse passar por cima (hover) */
+
+&:hover {
+  background-color: red;
+}
+
+/* Quando estiver clicado (active) */
+&:active {
+  background-color: green;
+}
+
+/* Quando estiver focado (focus) */
+&:focus {
+  outline: 2px solid orange;
+}
+
+/* O que acontece aqui:
+    - "&:hover" vira ".botao:hover"
+    - "&:active" vira ".botao:active"
+    - "&:focus" vira ".botao:focus"
+  
+    VANTAGENS:
+    - Mantém o código organizado e agrupado.
+    - Facilita a leitura e manutenção.
+    - Evita repetição do seletor pai. */
