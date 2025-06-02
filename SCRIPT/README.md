@@ -1,0 +1,23 @@
+# Guia JavaScript para Web
+
+- Como usar JavaScript (interno e externo)
+- Objetos globais (`window`, `document`)
+- Variáveis e tipos de dados
+- Manipulação do DOM
+- Manipulação de estilo e classes
+- Eventos (click e outros)
+- Criação e remoção de elementos HTML
+- LocalStorage no navegador
+- Requisições HTTP com `fetch` usando:
+  - then/catch
+  - async/await
+  - try/catch/finally
+- Funções tradicionais e arrow functions
+- Condicionais (`if`, `else`)
+- Laços (`for`, `forEach`)
+- Escopo (global e local)
+- Modularização com `import/export`
+- Uso de `<script type="module">`
+- Expressões Regulares (RegEx)
+  - Validação de e-mail
+  - Extração de números de texto
