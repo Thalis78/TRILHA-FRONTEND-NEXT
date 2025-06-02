@@ -25,7 +25,7 @@ let aprovado = true;
 let endereco;
 console.log(endereco); // undefined
 
-// Null (ausência intencional de valor)
+// Null (ausência de valor)
 let salario = null;
 
 // Object (estrutura com pares de chave-valor)
