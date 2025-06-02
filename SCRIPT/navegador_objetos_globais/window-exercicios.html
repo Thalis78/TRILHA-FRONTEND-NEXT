@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Exercício - Window</title>
+  </head>
+  <body>
+    <!-- 1. Exiba a URL atual da página no console -->
+    <script>
+      console.log("URL atual:", window.location.href);
+    </script>
+
+    <!-- 2. Botão para recarregar a página -->
+    <button onclick="recarregar()">Recarregar</button>
+    <script>
+      const recarregar = () => {
+        window.location.reload();
+        console.log("Página recarregada!");
+      };
+    </script>
+
+    <!-- 3. Mostre largura e altura da janela a cada 3 segundos -->
+    <script>
+      const intervalo = window.setInterval(() => {
+        console.log(
+          `LARGURA: ${window.innerWidth} | ALTURA: ${window.innerHeight}`
+        );
+      }, 3000);
+    </script>
+
+    <!-- 4. Prompt com nome do usuário e saudação -->
+    <script>
+      const nome_user = window.prompt("Informe seu nome:");
+      if (nome_user) {
+        window.alert(`Olá, ${nome_user}! Seja bem-vindo.`);
+      } else {
+        window.alert("Você não digitou um nome.");
+      }
+    </script>
+
+    <!-- 5. Botão para redirecionar para outro site -->
+    <button onclick="redirecionar()">Ir para pizzaria favorita</button>
+    <script>
+      const redirecionar = () => {
+        window.location.href = "https://pizzariafav.com"; // Corrigido link
+      };
+    </script>
+
+    <!-- 6. Detectar redimensionamento da janela -->
+    <script>
+      window.addEventListener("resize", () => {
+        console.log(
+          `Redimensionado para: ${window.innerWidth} x ${window.innerHeight}`
+        );
+      });
+    </script>
+
+    <hr />
+  </body>
+</html>

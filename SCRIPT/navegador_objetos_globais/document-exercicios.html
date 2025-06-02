@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- 1. Parágrafo alterado via DOM -->
+    <p id="mensagem"></p>
+    <script>
+      const mensagem = document.getElementById("mensagem");
+      mensagem.textContent = "Olá, DOM!";
+    </script>
+
+    <!-- 2. Adicionando item extra na lista -->
+    <ul id="lista">
+      <li>Arroz</li>
+      <li>Feijão</li>
+      <li>Macarrão</li>
+    </ul>
+    <script>
+      const lista = document.getElementById("lista");
+      const novoItem = document.createElement("li");
+      novoItem.textContent = "Item extra";
+      lista.appendChild(novoItem);
+    </script>
+
+    <!-- 3. Botão para alterar fundo do div para azul -->
+    <div id="caixa" style="padding: 10px; margin: 10px 0">Exemplo teste</div>
+    <button onclick="fundo_azul()">FUNDO AZUL</button>
+    <script>
+      function fundo_azul() {
+        const caixa = document.getElementById("caixa");
+        caixa.style.backgroundColor = "blue";
+        caixa.style.color = "white"; // Para melhor contraste
+      }
+    </script>
+
+    <!-- 4. Campo input que mostra no console o que é digitado em tempo real -->
+    <div>
+      <label for="nome">NOME:</label>
+      <input
+        type="text"
+        id="nome"
+        maxlength="50"
+        placeholder="Nome: Thalisson Moura"
+      />
+    </div>
+    <script>
+      const nome_usuario = document.getElementById("nome");
+      nome_usuario.addEventListener("input", (event) => {
+        let digitado = event.target.value;
+        console.log(`VOCÊ ESTÁ DIGITANDO: ${digitado}`);
+        if (digitado.length === 50) {
+          alert("VOCÊ CHEGOU AO MÁXIMO DE CARACTERES POSSÍVEIS");
+        }
+      });
+    </script>
+  </body>
+</html>
